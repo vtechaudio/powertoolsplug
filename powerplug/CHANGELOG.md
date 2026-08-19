@@ -1,3 +1,5 @@
+## 2.22.3
+- CRITICAL FIX for the small product photo. The v2.22.1 gallery/summary override shipped with a malformed "\!important" (a stray backslash slipped in), which browsers treat as invalid — so the !important was ignored and WooCommerce's default float + width:48% on the product gallery and summary kept winning. That is why the product photo stayed small and the summary narrow even with the "fix" installed. All seven declarations are now valid !important, so the gallery fills its column (large photo) and the summary uses its full column. Re-install v2.22.3 and purge cache to apply.
 ## 2.22.2
 - Header: fixed the missing navigation menu after the search box. The primary nav was set to fallback_cb=false, so when no menu is assigned to the "primary" location (Appearance > Menus) the whole menu row rendered empty. It now falls back to an automatic horizontal menu — Home, the top product categories, All Products, About Us and Contact — so the header navigation is never blank. Assigning your own menu to the "primary" location still takes priority and replaces the fallback. (Category list cached 6h.)
 ## 2.22.1
