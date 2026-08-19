@@ -110,7 +110,34 @@ final class Home {
         echo '<div class="pp-catscroll" data-pp-catscroll><div class="pp-catscroll__track">';
         foreach ( $terms as $t ) {
             $thumb_id = get_term_meta( $t->term_id, 'thumbnail_id', true );
-            $img      = $thumb_id ? wp_get_attachment_image( (int) $thumb_id, 'medium', false, array( 'loading' => 'lazy' ) ) : '<span class="pp-cat-card__ph" aria-hidden="true"></span>';
+            if ( $thumb_id ) {
+                $img = wp_get_attachment_image( (int) $thumb_id, 'medium', false, array( 'loading' => 'lazy', 'alt' => $t->name ) );
+            } else {
+                // No category image set: fall back to the first in-category product's photo,
+                // then to the WooCommerce placeholder, so a card never shows an empty box.
+                $fallback_id = \PowerPlug\Support\Cache::remember( 'pp_cat_img_' . (int) $t->term_id, 6 * HOUR_IN_SECONDS, static function () use ( $t ) {
+                    $ids = get_posts( array(
+                        'post_type'        => 'product',
+                        'post_status'      => 'publish',
+                        'posts_per_page'   => 1,
+                        'fields'           => 'ids',
+                        'orderby'          => 'date',
+                        'order'            => 'DESC',
+                        'no_found_rows'    => true,
+                        'suppress_filters' => false,
+                        'tax_query'        => array( array( 'taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => (int) $t->term_id ) ),
+                        'meta_query'       => array( array( 'key' => '_thumbnail_id', 'compare' => 'EXISTS' ) ),
+                    ) );
+                    return ( ! empty( $ids ) ) ? (int) get_post_thumbnail_id( (int) $ids[0] ) : 0;
+                } );
+                if ( $fallback_id ) {
+                    $img = wp_get_attachment_image( (int) $fallback_id, 'medium', false, array( 'loading' => 'lazy', 'alt' => $t->name ) );
+                } elseif ( function_exists( 'wc_placeholder_img' ) ) {
+                    $img = wc_placeholder_img( 'medium' );
+                } else {
+                    $img = '<span class="pp-cat-card__ph" aria-hidden="true"></span>';
+                }
+            }
             printf(
                 '<a class="pp-cat-card" href="%s"><span class="pp-cat-card__img">%s</span><span class="pp-cat-card__name">%s</span><span class="pp-cat-card__count">%d %s</span></a>',
                 esc_url( (string) get_term_link( $t ) ),
