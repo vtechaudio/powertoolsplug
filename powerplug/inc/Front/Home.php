@@ -37,8 +37,8 @@ final class Home {
 			<div class="pp-hero__inner">
 				<div class="pp-hero__copy">
 					<p class="pp-hero__eyebrow"><?php esc_html_e( 'Nairobi · Nationwide delivery · M-Pesa', 'powerplug' ); ?></p>
-					<h1 class="pp-hero__title"><?php esc_html_e( 'Genuine Power Tools & Industrial Equipment in Kenya', 'powerplug' ); ?></h1>
-					<p class="pp-hero__sub"><?php esc_html_e( 'Makita, Bosch, DeWalt, Ingco & Total — warranty-backed, dispatched same day in Nairobi.', 'powerplug' ); ?></p>
+					<h1 class="pp-hero__title"><?php esc_html_e( 'Power Tools, Solar & Industrial Equipment in Kenya', 'powerplug' ); ?></h1>
+					<p class="pp-hero__sub"><?php esc_html_e( 'Power tools, solar, generators and workshop equipment — dispatched same day in Nairobi, delivered countrywide.', 'powerplug' ); ?></p>
 					<div class="pp-hero__cta">
 						<a class="button" href="<?php echo esc_url( function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ) ); ?>"><?php esc_html_e( 'Shop all tools', 'powerplug' ); ?></a>
 						<a class="button button-ghost" href="https://wa.me/<?php echo esc_attr( preg_replace( '/[^0-9]/', '', \PowerPlug\Customizer\Customizer::val( 'pp_whatsapp' ) ) ); ?>" rel="noopener"><?php esc_html_e( 'Chat on WhatsApp', 'powerplug' ); ?></a>
@@ -184,7 +184,7 @@ final class Home {
                 continue;
             }
             $d_title = ( 1 === $i ) ? __( 'Power Tools, Solar & Generators', 'powerplug' ) : '';
-            $d_sub   = ( 1 === $i ) ? __( 'Genuine, warranty-backed equipment. Nationwide delivery and M-Pesa.', 'powerplug' ) : '';
+            $d_sub   = ( 1 === $i ) ? __( 'Power tools, solar and workshop equipment. Nationwide delivery and M-Pesa.', 'powerplug' ) : '';
             $d_btn   = ( 1 === $i ) ? __( 'Shop all products', 'powerplug' ) : '';
             $slides[] = array(
                 'img'   => $img,
@@ -349,7 +349,7 @@ if ( 'rand' === $order ) {
 
 	public static function why_choose_us(): void {
 		$points = [
-			[ 'Genuine & warranty-backed', 'We source only from reputable manufacturers and distributors.' ],
+			[ 'Quality tools & equipment', 'We supply power tools, equipment and accessories from established manufacturers and suppliers.' ],
 			[ 'Same-day Nairobi dispatch', 'Order before 5:00 PM for same-day dispatch; countrywide in 1–3 days.' ],
 			[ 'M-Pesa & pay on delivery', 'Pay the way that suits you — securely.' ],
 			[ 'Expert support', 'Our team knows these tools inside out and helps you choose right.' ],
@@ -363,9 +363,9 @@ if ( 'rand' === $order ) {
 
 	public static function faq(): void {
 		$faqs = [
-			[ 'Are your tools genuine?', 'Yes. Every item is sourced from reputable manufacturers and distributors, and is warranty-backed.' ],
+			[ 'What products do you sell?', 'Power tools, solar equipment, generators, water pumps, welding machines, hand tools and related accessories. Brand, model and warranty details are shown on each product page where applicable.' ],
 			[ 'Do you deliver countrywide?', 'Yes. Delivery is KSh 300 within Nairobi and KSh 1,000 to the rest of Kenya, with Nairobi same/next day and countrywide in 1–3 business days.' ],
-			[ 'What payment methods do you accept?', 'M-Pesa, bank transfer and pay-on-delivery where available.' ],
+			[ 'What payment methods do you accept?', 'M-Pesa and Pay on Delivery.' ],
 			[ 'Can I return an item?', 'Yes, unused items in original packaging within 7 days. Faulty items are replaced or refunded at our cost.' ],
 		];
 		echo '<section class="pp-section"><div class="pp-container pp-container--narrow"><h2 class="pp-section__title">' . esc_html__( 'Frequently asked questions', 'powerplug' ) . '</h2>';
@@ -384,7 +384,7 @@ if ( 'rand' === $order ) {
 	public static function newsletter(): void {
 		echo '<section class="pp-section pp-newsletter"><div class="pp-container pp-container--narrow">';
 		echo '<h2 class="pp-section__title">' . esc_html__( 'Get deals & new arrivals', 'powerplug' ) . '</h2>';
-		echo '<p>' . esc_html__( 'Join our list for offers on Makita, Bosch, Ingco and Total tools.', 'powerplug' ) . '</p>';
+		echo '<p>' . esc_html__( 'Join our list for deals and new arrivals on tools, solar and equipment.', 'powerplug' ) . '</p>';
 		$html = do_shortcode( '[contact-form-7 id="newsletter" title="Newsletter"]' );
 		$has_form = ( strpos( (string) $html, 'wpcf7' ) === false ) ? false : true;
 		$has_error = ( strpos( (string) $html, 'not found' ) === false ) ? false : true;
@@ -401,7 +401,7 @@ if ( 'rand' === $order ) {
 
 	public static function trust_strip(): void {
 		$items = array(
-			__( 'Genuine & warranty-backed products', 'powerplug' ),
+			__( 'Warranty support where applicable', 'powerplug' ),
 			__( 'Physical shop on Tom Mboya St, Nairobi', 'powerplug' ),
 			__( 'Secure payment: M-Pesa or Pay on delivery', 'powerplug' ),
 			__( 'Nationwide delivery in 1–3 days', 'powerplug' ),

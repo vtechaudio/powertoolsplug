@@ -19,7 +19,7 @@ if ( '' === $pp_brands ) { $pp_brands = 'Total, Ingco, Maxmech, DCA'; }
 	<div class="pp-footer__cols">
 		<div class="pp-footer__col pp-footer__about">
 			<?php the_custom_logo(); ?>
-			<p><?php printf( esc_html( __( 'Your trusted power-tools shop in Nairobi. Genuine %s and more, for professionals and home projects. Pay by M-Pesa or on delivery.', 'powerplug' ) ), esc_html( $pp_brands ) ); ?></p>
+			<p><?php printf( esc_html( __( 'Your trusted power-tools shop in Nairobi. %s and more, for professionals and home projects. Pay by M-Pesa or on delivery.', 'powerplug' ) ), esc_html( $pp_brands ) ); ?></p>
 			<p class="pp-footer__social">
 				<?php if ( strlen( $pp_whatsapp ) > 0 ) : ?><a href="https://wa.me/<?php echo esc_attr( $pp_whatsapp ); ?>" rel="noopener">WhatsApp</a> &middot;<?php endif; ?>
 				<a href="https://www.facebook.com/" rel="noopener">Facebook</a> &middot;

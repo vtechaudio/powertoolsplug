@@ -67,7 +67,7 @@ final class WooCommerce implements Bootable {
 
 	public function trust_badges(): void {
 		$badges = [
-			__( 'Genuine & warranty-backed', 'powerplug' ),
+			__( 'Warranty where applicable', 'powerplug' ),
 			__( 'Nationwide delivery', 'powerplug' ),
 			__( 'M-Pesa & Pay on delivery', 'powerplug' ),
 		];

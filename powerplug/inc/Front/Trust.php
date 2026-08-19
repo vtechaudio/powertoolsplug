@@ -35,8 +35,7 @@ final class Trust implements Bootable {
 
 	public function trust_badges( $atts = array() ): string {
 		$badges = array(
-			__( 'Genuine Products', 'powerplug' ),
-			__( 'Warranty-Backed', 'powerplug' ),
+			__( 'Warranty where applicable', 'powerplug' ),
 			__( 'Secure SSL Checkout', 'powerplug' ),
 			__( 'Fast Countrywide Delivery', 'powerplug' ),
 			__( 'Pay on Delivery', 'powerplug' ),
@@ -55,7 +54,7 @@ final class Trust implements Bootable {
 		$a     = is_array( $atts ) ? $atts : array();
 		$title = isset( $a['title'] ) ? (string) $a['title'] : __( 'Why buy from Power Tools Plug Kenya', 'powerplug' );
 		$reasons = array(
-			array( __( 'Genuine, warranty-backed tools', 'powerplug' ), __( 'We stock authentic branded tools and equipment, each backed by warranty. No fakes, no imitations.', 'powerplug' ) ),
+			array( __( 'Tools, equipment & accessories', 'powerplug' ), __( 'We supply power tools, equipment and accessories from established manufacturers and suppliers. Product brand, model and warranty information is provided on the relevant product page where applicable.', 'powerplug' ) ),
 			array( __( 'A real shop you can visit', 'powerplug' ), __( 'Come see stock in person at Magomano House, Tom Mboya Street, Nairobi. We are a physical business, not only a website.', 'powerplug' ) ),
 			array( __( 'Pay on delivery', 'powerplug' ), __( 'Inspect your order first, then pay by M-Pesa or cash on delivery. Your money stays safe until you receive your item.', 'powerplug' ) ),
 			array( __( 'Same-day Nairobi dispatch', 'powerplug' ), __( 'Order before 5:00 PM and we dispatch the same day, with countrywide delivery in 1 to 3 business days.', 'powerplug' ) ),
@@ -74,7 +73,7 @@ final class Trust implements Bootable {
 		$uri = get_template_directory_uri() . '/assets/img/store/';
 		$dir = get_template_directory() . '/assets/img/store/';
 		$shots = array(
-			array( 'pp-shop-1', __( 'Inside our shop: genuine power tools in stock', 'powerplug' ) ),
+			array( 'pp-shop-1', __( 'Inside our shop on Tom Mboya Street, Nairobi', 'powerplug' ) ),
 			array( 'pp-shop-2', __( 'Our shelves at Magomano House, Tom Mboya Street, Nairobi', 'powerplug' ) ),
 		);
 		$out = '<div class="pp-store-gallery">';

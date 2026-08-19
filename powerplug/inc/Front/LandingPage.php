@@ -219,7 +219,7 @@ final class LandingPage implements Bootable {
 		$sub = (string) get_post_meta( $post_id, '_pp_lp_hero_sub', true );
 		if ( '' === $sub ) {
 			$sub = ( '' === $copy['sub'] )
-				? __( 'Genuine, warranty-backed products. Pay on delivery countrywide, same-day Nairobi dispatch before 5PM.', 'powerplug' )
+				? __( 'Power tools and equipment with warranty where applicable. Pay on delivery countrywide, same-day Nairobi dispatch before 5PM.', 'powerplug' )
 				: $copy['sub'];
 		}
 
@@ -359,7 +359,7 @@ final class LandingPage implements Bootable {
 		echo '<a class="pp-lp-btn pp-lp-btn--ghost" href="#pp-lp-models">' . esc_html__( 'View sizes', 'powerplug' ) . '</a>';
 		echo '</div></div>';
 		echo '<div class="pp-lp-dispatch"><span class="pp-lp-dot" aria-hidden="true"></span><div><strong>' . esc_html__( 'In stock.', 'powerplug' ) . '</strong> <span data-pp-dispatch>' . esc_html__( 'Order before 5:00 PM for same-day Nairobi dispatch.', 'powerplug' ) . '</span></div></div>';
-		echo '<p class="pp-lp-guarantee">' . esc_html__( 'Warranty-backed · 7-day returns on unused items · Faulty units replaced free', 'powerplug' ) . '</p>';
+		echo '<p class="pp-lp-guarantee">' . esc_html__( 'Warranty where applicable · 7-day returns on unused items · Faulty units replaced or refunded at our cost', 'powerplug' ) . '</p>';
 		echo '</div>';
 
 		echo '<div class="pp-lp-hero__media">';
@@ -381,7 +381,7 @@ final class LandingPage implements Bootable {
 
 	private static function trust(): void {
 		$items = array(
-			array( __( 'Genuine & warranty-backed', 'powerplug' ), __( 'Sourced from reputable suppliers', 'powerplug' ) ),
+			array( __( 'Warranty where applicable', 'powerplug' ), __( 'Sourced from established manufacturers and suppliers', 'powerplug' ) ),
 			array( __( 'Physical shop on Tom Mboya St, Nairobi', 'powerplug' ), __( 'Tom Mboya St — visit us', 'powerplug' ) ),
 			array( __( 'M-Pesa & Pay on Delivery', 'powerplug' ), __( 'Pay the way that suits you', 'powerplug' ) ),
 			array( __( 'Nationwide delivery', 'powerplug' ), __( '1–3 business days', 'powerplug' ) ),
@@ -404,7 +404,7 @@ final class LandingPage implements Bootable {
 			array( $cat_count > 0 ? $cat_count : count( $products ), '', __( 'Models available', 'powerplug' ) ),
 			array( $total > 0 ? $total : 540, '+', __( 'Products in store', 'powerplug' ) ),
 			array( 3, '-day', __( 'Countrywide delivery', 'powerplug' ) ),
-			array( 100, '%', __( 'Genuine products', 'powerplug' ) ),
+			array( 7, '-day', __( 'Returns on unused items', 'powerplug' ) ),
 		);
 		echo '<section class="pp-lp pp-lp-stats-sec"><div class="pp-lp-wrap pp-lp-stats">';
 		foreach ( $stats as $s ) {
@@ -542,7 +542,7 @@ final class LandingPage implements Bootable {
 			array( __( 'Physical shop you can visit', 'powerplug' ), __( 'Tom Mboya St, Nairobi', 'powerplug' ), __( 'Usually none', 'powerplug' ) ),
 			array( __( 'Warranty & after-sales support', 'powerplug' ), __( 'Yes', 'powerplug' ), __( 'Rarely', 'powerplug' ) ),
 			array( __( 'Pay on delivery', 'powerplug' ), __( 'Countrywide', 'powerplug' ), __( 'Deposit first', 'powerplug' ) ),
-			array( __( 'Genuine, warranty-backed stock', 'powerplug' ), __( 'Yes', 'powerplug' ), __( 'Unknown', 'powerplug' ) ),
+			array( __( 'Warranty & clear product info', 'powerplug' ), __( 'Yes', 'powerplug' ), __( 'Unknown', 'powerplug' ) ),
 			array( __( 'Expert help choosing', 'powerplug' ), __( 'Yes', 'powerplug' ), __( 'No', 'powerplug' ) ),
 		);
 		echo '<section class="pp-lp pp-lp-compare-sec"><div class="pp-lp-wrap">';
@@ -557,7 +557,7 @@ final class LandingPage implements Bootable {
 	private static function shipping_warranty(): void {
 		echo '<section class="pp-lp pp-lp-sw-sec"><div class="pp-lp-wrap pp-lp-split">';
 		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Delivery & dispatch', 'powerplug' ) . '</h3><p>' . esc_html__( 'Nairobi: KSh 300, same/next day. Rest of Kenya: about KSh 1,000, 1–3 business days via trusted courier. Order before 5:00 PM for same-day Nairobi dispatch. Rider delivery with pay-on-delivery in Nairobi & Kiambu.', 'powerplug' ) . '</p></div>';
-		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Warranty & returns', 'powerplug' ) . '</h3><p>' . esc_html__( 'Every unit is warranty-backed. Return unused items in original packaging within 7 days. Faulty units are repaired, replaced or refunded at our cost.', 'powerplug' ) . '</p></div>';
+		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Warranty & returns', 'powerplug' ) . '</h3><p>' . esc_html__( 'Products carry the standard manufacturer warranty where applicable. Return unused items in original packaging within 7 days. Faulty units are repaired, replaced or refunded at our cost. Refunds are processed within 3–5 business days after approval.', 'powerplug' ) . '</p></div>';
 		echo '</div></section>';
 	}
 
@@ -638,51 +638,51 @@ final class LandingPage implements Bootable {
 		$map = array(
 			'incubators' => array(
 				'title' => 'Hatch More Chicks with an Automatic Egg Incubator',
-				'sub'   => 'Genuine, warranty-backed incubators with digital temperature and humidity control and automatic egg turning — solar or mains power. Pay on delivery countrywide.',
+				'sub'   => 'Incubators with digital temperature and humidity control and automatic egg turning — solar or mains power. Warranty where applicable. Pay on delivery countrywide.',
 			),
 			'water-pumps' => array(
 				'title' => 'Reliable Water Pumps for Home, Farm & Site',
-				'sub'   => 'Borehole, submersible and surface pumps for clean water and irrigation. Genuine, warranty-backed. Pay on delivery countrywide.',
+				'sub'   => 'Borehole, submersible and surface pumps for clean water and irrigation. Warranty where applicable. Pay on delivery countrywide.',
 			),
 			'hardware-tools' => array(
 				'title' => 'Quality Hardware Tools That Last',
-				'sub'   => 'Hand tools and hardware for builders, fundis and DIY. Genuine and warranty-backed, with same-day Nairobi dispatch and pay on delivery.',
+				'sub'   => 'Hand tools and hardware for builders, fundis and DIY. Warranty where applicable, with same-day Nairobi dispatch and pay on delivery.',
 			),
 			'weighing-scales' => array(
 				'title' => 'Accurate Weighing Scales for Your Business',
-				'sub'   => 'Platform, counting and retail scales for shops, farms and warehouses. Genuine and warranty-backed. Pay on delivery countrywide.',
+				'sub'   => 'Platform, counting and retail scales for shops, farms and warehouses. Warranty where applicable. Pay on delivery countrywide.',
 			),
 			'batteries' => array(
 				'title' => 'Deep-Cycle & Solar Batteries Built to Last',
-				'sub'   => 'Dependable batteries for solar, inverter and backup power. Genuine, warranty-backed. Pay on delivery countrywide.',
+				'sub'   => 'Dependable batteries for solar, inverter and backup power. Warranty where applicable. Pay on delivery countrywide.',
 			),
 			'welding-machines' => array(
 				'title' => 'Powerful Welding Machines for Every Job',
-				'sub'   => 'MMA, MIG and TIG inverter welders for workshops and site. Genuine and warranty-backed, with same-day Nairobi dispatch and pay on delivery.',
+				'sub'   => 'MMA, MIG and TIG inverter welders for workshops and site. Warranty where applicable, with same-day Nairobi dispatch and pay on delivery.',
 			),
 			'solar-panels' => array(
 				'title' => 'High-Efficiency Solar Panels for Kenya',
-				'sub'   => 'Monocrystalline panels for homes, farms and businesses. Genuine, warranty-backed. Pay on delivery countrywide.',
+				'sub'   => 'Monocrystalline panels for homes, farms and businesses. Warranty where applicable. Pay on delivery countrywide.',
 			),
 			'solar-inverters' => array(
 				'title' => 'Solar Inverters for Clean, Steady Power',
-				'sub'   => 'Hybrid and off-grid inverters to keep your home or business running through outages. Genuine and warranty-backed. Pay on delivery countrywide.',
+				'sub'   => 'Hybrid and off-grid inverters to keep your home or business running through outages. Warranty where applicable. Pay on delivery countrywide.',
 			),
 			'grinders' => array(
 				'title' => 'Angle Grinders Built for Hard Work',
-				'sub'   => 'Cutting and grinding power for metal, masonry and fabrication. Genuine, warranty-backed, with same-day Nairobi dispatch and pay on delivery.',
+				'sub'   => 'Cutting and grinding power for metal, masonry and fabrication. Warranty where applicable, with same-day Nairobi dispatch and pay on delivery.',
 			),
 			'demolition-breakers' => array(
 				'title' => 'Demolition Breakers That Power Through Concrete',
-				'sub'   => 'Heavy-duty breakers and jackhammers for concrete, rock and tarmac. Genuine and warranty-backed, with same-day Nairobi dispatch and pay on delivery.',
+				'sub'   => 'Heavy-duty breakers and jackhammers for concrete, rock and tarmac. Warranty where applicable, with same-day Nairobi dispatch and pay on delivery.',
 			),
 			'pressure-washers' => array(
 				'title' => 'High-Pressure Washers for a Spotless Finish',
-				'sub'   => 'Powerful pressure washers for cars, yards, walls and equipment. Genuine, warranty-backed. Pay on delivery countrywide.',
+				'sub'   => 'Powerful pressure washers for cars, yards, walls and equipment. Warranty where applicable. Pay on delivery countrywide.',
 			),
 			'vacuum-cleaners' => array(
 				'title' => 'Powerful Vacuum Cleaners for Home and Workshop',
-				'sub'   => 'Wet and dry vacuum cleaners for homes, offices and workshops. Genuine and warranty-backed, with same-day Nairobi dispatch and pay on delivery.',
+				'sub'   => 'Wet and dry vacuum cleaners for homes, offices and workshops. Warranty where applicable, with same-day Nairobi dispatch and pay on delivery.',
 			),
 		);
 		return isset( $map[ $slug ] ) ? $map[ $slug ] : array( 'title' => '', 'sub' => '' );
@@ -693,7 +693,7 @@ final class LandingPage implements Bootable {
 	 */
 	private static function generic_benefits(): array {
 		return array(
-			array( 'Genuine & warranty-backed', 'Sourced from reputable suppliers and backed by warranty.' ),
+			array( 'Warranty where applicable', 'Sourced from established manufacturers and suppliers.' ),
 			array( 'Same-day Nairobi dispatch', 'Order before 5:00 PM and we dispatch the same day.' ),
 			array( 'Pay on delivery', 'Inspect your order, then pay by M-Pesa or cash on delivery.' ),
 			array( 'Expert advice', 'Talk to real tool specialists before and after you buy.' ),

@@ -28,7 +28,7 @@ final class Customizer implements Bootable {
 			'pp_address'       => 'Magomano House, 1st Floor, Room 10D, Tom Mboya Street, Nairobi',
 			'pp_gbp_url'       => '',
 				'pp_priority_cat'  => 'incubators',
-			'pp_topbar_notice' => 'Genuine, warranty-backed power tools & equipment  |  Pay by M-Pesa or on delivery',
+			'pp_topbar_notice' => 'Power tools, solar & equipment  |  Pay by M-Pesa or on delivery',
 				'pp_wa_order_msg'  => 'Hi Power Tools Plug, I would like to order: {product} ({url})',
 		];
 	}
