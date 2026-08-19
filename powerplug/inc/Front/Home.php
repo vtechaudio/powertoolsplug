@@ -364,7 +364,7 @@ if ( 'rand' === $order ) {
 	public static function faq(): void {
 		$faqs = [
 			[ 'What products do you sell?', 'Power tools, solar equipment, generators, water pumps, welding machines, hand tools and related accessories. Brand, model and warranty details are shown on each product page where applicable.' ],
-			[ 'Do you deliver countrywide?', 'Yes. Delivery is KSh 300 within Nairobi and KSh 1,000 to the rest of Kenya, with Nairobi same/next day and countrywide in 1–3 business days.' ],
+			[ 'Do you deliver countrywide?', 'Yes. Delivery is KSh 300 within Nairobi and KSh 500 to the rest of Kenya, with Nairobi same/next day and countrywide in 1–3 business days. Heavy or oversized items are quoted by the courier based on weight and size.' ],
 			[ 'What payment methods do you accept?', 'M-Pesa and Pay on Delivery.' ],
 			[ 'Can I return an item?', 'Yes, unused items in original packaging within 7 days. Faulty items are replaced or refunded at our cost.' ],
 		];

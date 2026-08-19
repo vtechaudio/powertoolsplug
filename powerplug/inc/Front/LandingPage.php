@@ -556,7 +556,7 @@ final class LandingPage implements Bootable {
 
 	private static function shipping_warranty(): void {
 		echo '<section class="pp-lp pp-lp-sw-sec"><div class="pp-lp-wrap pp-lp-split">';
-		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Delivery & dispatch', 'powerplug' ) . '</h3><p>' . esc_html__( 'Nairobi: KSh 300, same/next day. Rest of Kenya: about KSh 1,000, 1–3 business days via trusted courier. Order before 5:00 PM for same-day Nairobi dispatch. Rider delivery with pay-on-delivery in Nairobi & Kiambu.', 'powerplug' ) . '</p></div>';
+		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Delivery & dispatch', 'powerplug' ) . '</h3><p>' . esc_html__( 'Nairobi: KSh 300, same/next day. Rest of Kenya: KSh 500, 1–3 business days via trusted courier. Heavy or oversized items are quoted by the courier based on weight and size. Order before 5:00 PM for same-day Nairobi dispatch. Rider delivery with pay-on-delivery in Nairobi & Kiambu.', 'powerplug' ) . '</p></div>';
 		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Warranty & returns', 'powerplug' ) . '</h3><p>' . esc_html__( 'Products carry the standard manufacturer warranty where applicable. Return unused items in original packaging within 7 days. Faulty units are repaired, replaced or refunded at our cost. Refunds are processed within 3–5 business days after approval.', 'powerplug' ) . '</p></div>';
 		echo '</div></section>';
 	}

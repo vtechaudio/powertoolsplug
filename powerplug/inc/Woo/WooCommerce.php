@@ -80,7 +80,7 @@ final class WooCommerce implements Bootable {
 
 	public function delivery_estimate(): void {
 		echo '<p class="pp-delivery">' .
-			esc_html__( 'Delivery: KSh 300 within Nairobi, KSh 1,000 outside Nairobi. Order before 5:00 PM for same-day dispatch in Nairobi; countrywide in 1–3 business days.', 'powerplug' ) .
+			esc_html__( 'Delivery: KSh 300 within Nairobi, KSh 500 to the rest of Kenya. Heavy or oversized items are quoted by the courier based on weight and size. Order before 5:00 PM for same-day dispatch in Nairobi; countrywide in 1–3 business days.', 'powerplug' ) .
 			'</p>';
 	}
 
