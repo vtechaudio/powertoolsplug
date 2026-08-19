@@ -8,6 +8,43 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Fallback primary menu: when no menu is assigned to the "primary" location,
+ * render a sensible horizontal nav (Home, top product categories, All Products,
+ * About, Contact) so the header navigation after the search box is never empty.
+ */
+if ( ! function_exists( 'pp_primary_menu_fallback' ) ) {
+	function pp_primary_menu_fallback( $args ) {
+		$args       = (array) $args;
+		$menu_id    = ( isset( $args['menu_id'] ) && $args['menu_id'] ) ? $args['menu_id'] : 'pp-primary-menu';
+		$menu_class = ( isset( $args['menu_class'] ) && $args['menu_class'] ) ? $args['menu_class'] : 'pp-primary__menu';
+		$shop       = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
+
+		$items = '<li class="menu-item"><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'powerplug' ) . '</a></li>';
+
+		if ( function_exists( 'get_terms' ) && taxonomy_exists( 'product_cat' ) ) {
+			$terms = \PowerPlug\Support\Cache::remember( 'pp_primary_fallback_cats_6', 6 * HOUR_IN_SECONDS, static function () {
+				$r = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => true, 'number' => 6, 'orderby' => 'count', 'order' => 'DESC', 'exclude' => array( (int) get_option( 'default_product_cat' ) ) ) );
+				return is_array( $r ) ? $r : array();
+			} );
+			if ( is_array( $terms ) ) {
+				foreach ( $terms as $t ) {
+					$link = get_term_link( $t );
+					if ( is_wp_error( $link ) === false ) {
+						$items .= '<li class="menu-item"><a href="' . esc_url( $link ) . '">' . esc_html( $t->name ) . '</a></li>';
+					}
+				}
+			}
+		}
+
+		$items .= '<li class="menu-item"><a href="' . esc_url( $shop ) . '">' . esc_html__( 'All Products', 'powerplug' ) . '</a></li>';
+		$items .= '<li class="menu-item"><a href="' . esc_url( home_url( '/about-us/' ) ) . '">' . esc_html__( 'About Us', 'powerplug' ) . '</a></li>';
+		$items .= '<li class="menu-item"><a href="' . esc_url( home_url( '/contact-us/' ) ) . '">' . esc_html__( 'Contact', 'powerplug' ) . '</a></li>';
+
+		echo '<ul id="' . esc_attr( $menu_id ) . '" class="' . esc_attr( $menu_class ) . '">' . $items . '</ul>';
+	}
+}
+
 $pp_phone   = \PowerPlug\Customizer\Customizer::val( 'pp_phone' );
 $pp_wa      = (string) preg_replace( '/[^0-9]/', '', \PowerPlug\Customizer\Customizer::val( 'pp_whatsapp' ) );
 $pp_email   = \PowerPlug\Customizer\Customizer::val( 'pp_email' );
@@ -91,7 +128,7 @@ $pp_action  = home_url( '/' );
 							'container'      => false,
 							'menu_id'        => 'pp-primary-menu',
 							'menu_class'     => 'pp-primary__menu',
-							'fallback_cb'    => false,
+							'fallback_cb'    => 'pp_primary_menu_fallback',
 							'depth'          => 2,
 						)
 					);
