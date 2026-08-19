@@ -384,7 +384,7 @@ final class LandingPage implements Bootable {
 			array( __( 'Warranty where applicable', 'powerplug' ), __( 'Sourced from established manufacturers and suppliers', 'powerplug' ) ),
 			array( __( 'Physical shop on Tom Mboya St, Nairobi', 'powerplug' ), __( 'Tom Mboya St — visit us', 'powerplug' ) ),
 			array( __( 'M-Pesa & Pay on Delivery', 'powerplug' ), __( 'Pay the way that suits you', 'powerplug' ) ),
-			array( __( 'Nationwide delivery', 'powerplug' ), __( '1–3 business days', 'powerplug' ) ),
+			array( __( 'Nationwide delivery', 'powerplug' ), __( '1–5 business days', 'powerplug' ) ),
 		);
 		echo '<section class="pp-lp pp-lp-trust"><div class="pp-lp-wrap pp-lp-trust__grid">';
 		foreach ( $items as $it ) {
@@ -556,7 +556,7 @@ final class LandingPage implements Bootable {
 
 	private static function shipping_warranty(): void {
 		echo '<section class="pp-lp pp-lp-sw-sec"><div class="pp-lp-wrap pp-lp-split">';
-		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Delivery & dispatch', 'powerplug' ) . '</h3><p>' . esc_html__( 'Nairobi: KSh 300, same/next day. Rest of Kenya: KSh 500, 1–3 business days via trusted courier. Heavy or oversized items are quoted by the courier based on weight and size. Order before 5:00 PM for same-day Nairobi dispatch. Rider delivery with pay-on-delivery in Nairobi & Kiambu.', 'powerplug' ) . '</p></div>';
+		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Delivery & dispatch', 'powerplug' ) . '</h3><p>' . esc_html__( 'Nairobi: KSh 300, same/next day. Rest of Kenya: KSh 500 — major towns 1–3 business days, remote areas 2–5 after dispatch via trusted courier. Heavy or oversized items are quoted by the courier based on weight and size. Order before 5:00 PM for same-day Nairobi dispatch. Rider delivery with pay-on-delivery in Nairobi & Kiambu.', 'powerplug' ) . '</p></div>';
 		echo '<div class="pp-lp-card"><h3>' . esc_html__( 'Warranty & returns', 'powerplug' ) . '</h3><p>' . esc_html__( 'Products carry the standard manufacturer warranty where applicable. Return unused items in original packaging within 7 days. Faulty units are repaired, replaced or refunded at our cost. Refunds are processed within 3–5 business days after approval.', 'powerplug' ) . '</p></div>';
 		echo '</div></section>';
 	}
@@ -697,7 +697,7 @@ final class LandingPage implements Bootable {
 			array( 'Same-day Nairobi dispatch', 'Order before 5:00 PM and we dispatch the same day.' ),
 			array( 'Pay on delivery', 'Inspect your order, then pay by M-Pesa or cash on delivery.' ),
 			array( 'Expert advice', 'Talk to real tool specialists before and after you buy.' ),
-			array( 'Nationwide delivery', 'Delivered countrywide, typically in 1 to 3 business days.' ),
+			array( 'Nationwide delivery', 'Delivered countrywide, typically in 1 to 5 business days.' ),
 			array( 'Physical shop in Nairobi', 'Visit us at Magomano House, Tom Mboya St, Nairobi to see stock in person.' ),
 		);
 	}

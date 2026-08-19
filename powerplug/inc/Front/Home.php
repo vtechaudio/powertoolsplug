@@ -350,7 +350,7 @@ if ( 'rand' === $order ) {
 	public static function why_choose_us(): void {
 		$points = [
 			[ 'Quality tools & equipment', 'We supply power tools, equipment and accessories from established manufacturers and suppliers.' ],
-			[ 'Same-day Nairobi dispatch', 'Order before 5:00 PM for same-day dispatch; countrywide in 1–3 days.' ],
+			[ 'Same-day Nairobi dispatch', 'Order before 5:00 PM for same-day Nairobi dispatch; countrywide delivery in 1–5 business days.' ],
 			[ 'M-Pesa & pay on delivery', 'Pay the way that suits you — securely.' ],
 			[ 'Expert support', 'Our team knows these tools inside out and helps you choose right.' ],
 		];
@@ -364,7 +364,7 @@ if ( 'rand' === $order ) {
 	public static function faq(): void {
 		$faqs = [
 			[ 'What products do you sell?', 'Power tools, solar equipment, generators, water pumps, welding machines, hand tools and related accessories. Brand, model and warranty details are shown on each product page where applicable.' ],
-			[ 'Do you deliver countrywide?', 'Yes. Delivery is KSh 300 within Nairobi and KSh 500 to the rest of Kenya, with Nairobi same/next day and countrywide in 1–3 business days. Heavy or oversized items are quoted by the courier based on weight and size.' ],
+			[ 'Do you deliver countrywide?', 'Yes. Delivery is KSh 300 within Nairobi and KSh 500 to the rest of Kenya. Nairobi is same/next day; major towns about 1–3 business days; remote areas about 2–5 business days. Heavy or oversized items are quoted by the courier based on weight and size.' ],
 			[ 'What payment methods do you accept?', 'M-Pesa and Pay on Delivery.' ],
 			[ 'Can I return an item?', 'Yes, unused items in original packaging within 7 days. Faulty items are replaced or refunded at our cost.' ],
 		];
@@ -404,7 +404,7 @@ if ( 'rand' === $order ) {
 			__( 'Warranty support where applicable', 'powerplug' ),
 			__( 'Physical shop on Tom Mboya St, Nairobi', 'powerplug' ),
 			__( 'Secure payment: M-Pesa or Pay on delivery', 'powerplug' ),
-			__( 'Nationwide delivery in 1–3 days', 'powerplug' ),
+			__( 'Nationwide delivery in 1–5 business days', 'powerplug' ),
 		);
 		echo '<section class="pp-trust-strip" aria-label="' . esc_attr__( 'Why shop with Power Tools Plug', 'powerplug' ) . '"><div class="pp-container pp-trust-strip__grid">';
 		foreach ( $items as $it ) {

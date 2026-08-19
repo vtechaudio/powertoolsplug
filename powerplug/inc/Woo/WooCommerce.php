@@ -16,9 +16,10 @@ final class WooCommerce implements Bootable {
 	public function boot(): void {
 		add_action( 'after_setup_theme', [ $this, 'columns' ] );
 		add_action( 'woocommerce_before_shop_loop_item_title', [ $this, 'stock_badge' ], 9 );
+		// Structured product-assurance facts above the buy button (Brand, SKU/MPN, Condition, Warranty, Delivery, Returns).
+		add_action( 'woocommerce_single_product_summary', [ $this, 'product_assurance' ], 25 );
 		add_action( 'woocommerce_single_product_summary', [ $this, 'trust_badges' ], 35 );
 		add_action( 'woocommerce_after_add_to_cart_button', [ $this, 'single_whatsapp' ] );
-		add_action( 'woocommerce_single_product_summary', [ $this, 'delivery_estimate' ], 36 );
 		add_action( 'wp_footer', [ $this, 'sticky_atc' ] );
 		add_filter( 'woocommerce_product_tabs', [ $this, 'specifications_tab' ] );
 		add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'cart_fragments' ] );
@@ -65,23 +66,96 @@ final class WooCommerce implements Bootable {
 		}
 	}
 
-	public function trust_badges(): void {
-		$badges = [
-			__( 'Warranty where applicable', 'powerplug' ),
-			__( 'Nationwide delivery', 'powerplug' ),
-			__( 'M-Pesa & Pay on delivery', 'powerplug' ),
+	/**
+	 * At-a-glance product facts shown under the short description, above the buy button.
+	 * Only truthful, per-product data is rendered; optional rows are omitted when empty.
+	 */
+	public function product_assurance(): void {
+		global $product;
+		if ( ! $product instanceof \WC_Product ) {
+			return;
+		}
+
+		$shipping = home_url( '/shipping-delivery-policy/' );
+		$returns  = home_url( '/return-refund-policy/' );
+
+		// Condition attribute, defaulting to New.
+		$condition = (string) $product->get_attribute( 'condition' );
+		if ( '' === $condition ) {
+			$condition = __( 'New', 'powerplug' );
+		}
+
+		// Brand from a brand taxonomy, if one is registered and set.
+		$brand = '';
+		foreach ( [ 'product_brand', 'pwb-brand', 'pa_brand' ] as $tax ) {
+			if ( taxonomy_exists( $tax ) ) {
+				$terms = wp_get_post_terms( $product->get_id(), $tax, [ 'fields' => 'names' ] );
+				if ( $terms && ! is_wp_error( $terms ) ) {
+					$brand = implode( ', ', $terms );
+					break;
+				}
+			}
+		}
+
+		$model = (string) $product->get_attribute( 'model' );
+		$sku   = (string) $product->get_sku();
+
+		$rows = [];
+		if ( '' !== $brand ) {
+			$rows[] = [ __( 'Brand', 'powerplug' ), esc_html( $brand ) ];
+		}
+		if ( '' !== $model ) {
+			$rows[] = [ __( 'Model', 'powerplug' ), esc_html( $model ) ];
+		}
+		if ( '' !== $sku ) {
+			$rows[] = [ __( 'SKU / MPN', 'powerplug' ), esc_html( $sku ) ];
+		}
+		$rows[] = [ __( 'Condition', 'powerplug' ), esc_html( $condition ) ];
+		$rows[] = [ __( 'Warranty', 'powerplug' ), esc_html__( 'Manufacturer warranty where applicable', 'powerplug' ) ];
+		$rows[] = [
+			__( 'Delivery', 'powerplug' ),
+			sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( $shipping ),
+				esc_html__( 'KSh 300 within Nairobi · KSh 500 rest of Kenya', 'powerplug' )
+			),
 		];
-		echo '<ul class="pp-trust" aria-label="' . esc_attr__( 'Store guarantees', 'powerplug' ) . '">';
-		foreach ( $badges as $b ) {
-			echo '<li>' . esc_html( $b ) . '</li>';
+		$rows[] = [
+			__( 'Returns', 'powerplug' ),
+			sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( $returns ),
+				esc_html__( 'Easy returns under our Return & Refund Policy', 'powerplug' )
+			),
+		];
+
+		echo '<ul class="pp-assurance" aria-label="' . esc_attr__( 'Product details', 'powerplug' ) . '">';
+		foreach ( $rows as $r ) {
+			printf(
+				'<li><span class="pp-assurance__k">%s</span><span class="pp-assurance__v">%s</span></li>',
+				esc_html( $r[0] ),
+				wp_kses_post( $r[1] )
+			);
 		}
 		echo '</ul>';
 	}
 
-	public function delivery_estimate(): void {
-		echo '<p class="pp-delivery">' .
-			esc_html__( 'Delivery: KSh 300 within Nairobi, KSh 500 to the rest of Kenya. Heavy or oversized items are quoted by the courier based on weight and size. Order before 5:00 PM for same-day dispatch in Nairobi; countrywide in 1–3 business days.', 'powerplug' ) .
-			'</p>';
+	public function trust_badges(): void {
+		$items = [
+			[ __( 'Warranty where applicable', 'powerplug' ), __( 'On eligible brands & items', 'powerplug' ) ],
+			[ __( 'Fast delivery', 'powerplug' ), __( 'Same-day Nairobi dispatch', 'powerplug' ) ],
+			[ __( 'Secure payment', 'powerplug' ), __( 'M-Pesa or pay on delivery', 'powerplug' ) ],
+			[ __( 'Real support', 'powerplug' ), __( 'Call, WhatsApp or email', 'powerplug' ) ],
+		];
+		echo '<ul class="pp-trust" aria-label="' . esc_attr__( 'Why buy from us', 'powerplug' ) . '">';
+		foreach ( $items as $it ) {
+			printf(
+				'<li class="pp-trust__item"><span class="pp-trust__t">%s</span><span class="pp-trust__s">%s</span></li>',
+				esc_html( $it[0] ),
+				esc_html( $it[1] )
+			);
+		}
+		echo '</ul>';
 	}
 
 	public function single_whatsapp(): void {

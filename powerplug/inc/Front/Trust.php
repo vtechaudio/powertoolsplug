@@ -57,7 +57,7 @@ final class Trust implements Bootable {
 			array( __( 'Tools, equipment & accessories', 'powerplug' ), __( 'We supply power tools, equipment and accessories from established manufacturers and suppliers. Product brand, model and warranty information is provided on the relevant product page where applicable.', 'powerplug' ) ),
 			array( __( 'A real shop you can visit', 'powerplug' ), __( 'Come see stock in person at Magomano House, Tom Mboya Street, Nairobi. We are a physical business, not only a website.', 'powerplug' ) ),
 			array( __( 'Pay on delivery', 'powerplug' ), __( 'Inspect your order first, then pay by M-Pesa or cash on delivery. Your money stays safe until you receive your item.', 'powerplug' ) ),
-			array( __( 'Same-day Nairobi dispatch', 'powerplug' ), __( 'Order before 5:00 PM and we dispatch the same day, with countrywide delivery in 1 to 3 business days.', 'powerplug' ) ),
+			array( __( 'Same-day Nairobi dispatch', 'powerplug' ), __( 'Order before 5:00 PM and we dispatch the same day, with countrywide delivery in 1 to 5 business days.', 'powerplug' ) ),
 			array( __( 'Expert advice', 'powerplug' ), __( 'Talk to real tool specialists before and after you buy. We help you choose the right tool for the job.', 'powerplug' ) ),
 			array( __( 'Trusted across Kenya', 'powerplug' ), __( 'Contractors, technicians, institutions, hardware stores, farmers and homeowners buy from us countrywide.', 'powerplug' ) ),
 		);
